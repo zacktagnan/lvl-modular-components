@@ -40,9 +40,11 @@ class MakeViewModel extends Command
         $class = array_pop($parts);
 
         // Juntando el Namespace base con el propio definido por el usuario
-        $namespace = count($parts) === 0
-            ? 'App\\ViewModels'
-            : 'App\\ViewModels\\' . implode('\\', $parts);
+        // $namespace = count($parts) === 0
+        //     ? 'App\\ViewModels'
+        //     : 'App\\ViewModels\\' . implode('\\', $parts);
+        // o
+        $namespace = 'App\\ViewModels' . (!empty($parts) ? '\\' . implode('\\', $parts) : '');
 
         // Generando la ruta del archivo, simplemente, el directorio dentro de la ruta general
         $path = app_path('ViewModels/' . implode('/', $parts) . '/' . $class . '.php');
