@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\ViewModels\ViewModel;
+
+class {{ class }} extends ViewModel
+{
+    // Add your ViewModel logic here
+}
