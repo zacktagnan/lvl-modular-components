@@ -22,6 +22,8 @@ class MakeViewModel extends Command
      */
     protected $description = 'Create a new ViewModel file in a specific namespace.';
 
+    protected $itemName = 'ViewModel';
+
     public function __construct(protected Filesystem $files)
     {
         parent::__construct();
@@ -41,17 +43,17 @@ class MakeViewModel extends Command
 
         // Juntando el Namespace base con el propio definido por el usuario
         // $namespace = count($parts) === 0
-        //     ? 'App\\ViewModels'
-        //     : 'App\\ViewModels\\' . implode('\\', $parts);
+        //     ? 'App\\' . $this->itemName . 's'
+        //     : 'App\\' . $this->itemName . 's\\' . implode('\\', $parts);
         // o
-        $namespace = 'App\\ViewModels' . (!empty($parts) ? '\\' . implode('\\', $parts) : '');
+        $namespace = 'App\\' . $this->itemName . 's' . (!empty($parts) ? '\\' . implode('\\', $parts) : '');
 
         // Generando la ruta del archivo, simplemente, el directorio dentro de la ruta general
-        $path = app_path('ViewModels/' . implode('/', $parts) . '/' . $class . '.php');
+        $path = app_path($this->itemName . 's/' . implode('/', $parts) . '/' . $class . '.php');
 
         // Verificando si ya existe
         if ($this->files->exists($path)) {
-            $this->error('ViewModel already exists');
+            $this->error($this->itemName . ' already exists');
             return false;
         }
 
@@ -66,7 +68,7 @@ class MakeViewModel extends Command
         // Generando el archivo
         $this->files->put($path, $stub);
 
-        $this->info('ViewModel created successfully.');
+        $this->info($this->itemName . ' created successfully.');
 
         return true;
     }
