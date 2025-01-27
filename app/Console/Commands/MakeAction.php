@@ -32,7 +32,7 @@ class MakeAction extends Command
     /**
      * @throws FileNotFoundException
      */
-    public function handle()
+    public function handle(): void
     {
         $name = $this->argument('name');
 
@@ -44,8 +44,7 @@ class MakeAction extends Command
         $path = app_path($this->itemName . 's/' . implode('/', $parts) . '/' . $class . '.php');
 
         if ($this->files->exists($path)) {
-            $this->error($this->itemName . ' already exists');
-            return false;
+            $this->fail($this->itemName . ' already exists');
         }
 
         $this->makeDirectory($path);
@@ -59,8 +58,6 @@ class MakeAction extends Command
         $this->files->put($path, $stub);
 
         $this->info($this->itemName . ' created successfully.');
-
-        return true;
     }
 
     protected function makeDirectory($path): void

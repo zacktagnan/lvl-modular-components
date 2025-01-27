@@ -32,7 +32,7 @@ class MakeViewModel extends Command
     /**
      * @throws FileNotFoundException
      */
-    public function handle(): bool
+    public function handle(): void
     {
         // Inicialmente, el NAME incluye, tanto el Namespace propio del ViewModel, como su nombre.
         $name = $this->argument('name');
@@ -53,8 +53,9 @@ class MakeViewModel extends Command
 
         // Verificando si ya existe
         if ($this->files->exists($path)) {
-            $this->error($this->itemName . ' already exists');
-            return false;
+            // $this->error($this->itemName . ' already exists');
+            // return false;
+            $this->fail($this->itemName . ' already exists');
         }
 
         $this->makeDirectory($path);
@@ -69,8 +70,7 @@ class MakeViewModel extends Command
         $this->files->put($path, $stub);
 
         $this->info($this->itemName . ' created successfully.');
-
-        return true;
+        // return true;
     }
 
     protected function makeDirectory($path): void
