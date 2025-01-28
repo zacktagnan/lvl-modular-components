@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class ItemCollection extends Model
+class ItemCollection extends Base\ItemCollection
 {
     //
 }
