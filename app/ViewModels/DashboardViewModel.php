@@ -31,13 +31,13 @@ final class DashboardViewModel extends ViewModel
             [
                 'title' => __('Collections'),
                 'description' => __('Manage your collections'),
-                'url' => '#',
+                'url' => route('collections.index'),
                 'text' => __('Manage'),
             ],
             [
                 'title' => __('New Collection'),
                 'description' => __('Create a new Collection'),
-                'url' => '#',
+                'url' => route('collections.create'),
                 'text' => __('Create'),
             ],
         ];
