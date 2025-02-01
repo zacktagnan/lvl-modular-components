@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemCollectionController;
+use App\Http\Controllers\PipelineSearcherController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +27,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::prefix('searchers')->as('searchers.')->group(function () {
+    Route::get('/', PipelineSearcherController::class)->name('index');
+    Route::prefix('pipeline-1d2')->as('pipeline-1d2.')->group(function () {
+        Route::prefix('basic')->as('basic.')->group(function () {
+            Route::get('/articles', ArticleController::class)->name('articles');
+        });
+    });
+});

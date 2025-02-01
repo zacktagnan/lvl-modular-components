@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.shadow_dark_for_text {
+    text-shadow: #000 0 1px 5px;
+}
+
+.shadow_light_for_text {
+    text-shadow: #d7d7d7 0 1px 5px;
+}
