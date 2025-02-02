@@ -9,7 +9,7 @@ class ItemCollectionController extends Controller
 {
     public function index(GetItemCollectionViewModel $viewModel): View
     {
-        dd($viewModel->toArray());
+        // dd($viewModel->toArray());
         return view('collections.index', $viewModel);
     }
 }
