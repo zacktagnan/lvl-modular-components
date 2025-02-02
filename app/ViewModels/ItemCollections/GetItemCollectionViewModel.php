@@ -40,6 +40,7 @@ final class GetItemCollectionViewModel extends ViewModel
                 'title' => __('Crear un nuevo registro'),
                 'url' => route('collections.create'),
                 'text' => __('Crear'),
+                'class' => 'ml-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600',
             ],
         ];
     }
