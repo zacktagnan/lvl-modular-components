@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleBasicController;
+use App\Http\Controllers\ArticleImprovedController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemCollectionController;
 use App\Http\Controllers\PipelineSearcherController;
@@ -33,7 +34,10 @@ Route::prefix('searchers')->as('searchers.')->group(function () {
     Route::get('/', PipelineSearcherController::class)->name('index');
     Route::prefix('pipeline-1d2')->as('pipeline-1d2.')->group(function () {
         Route::prefix('basic')->as('basic.')->group(function () {
-            Route::get('/articles', ArticleController::class)->name('articles');
+            Route::get('/articles', ArticleBasicController::class)->name('articles');
+        });
+        Route::prefix('improved')->as('improved.')->group(function () {
+            Route::get('/articles', ArticleImprovedController::class)->name('articles');
         });
     });
 });

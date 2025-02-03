@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\ViewModels\Articles\SearchArticleViewModel;
+use App\ViewModels\Articles\SearchArticleBasicViewModel;
 
-class ArticleController extends Controller
+class ArticleBasicController extends Controller
 {
     // public function __invoke(): View
     // {
@@ -21,7 +21,7 @@ class ArticleController extends Controller
 
     //     return view('searchers.pipeline-1d2.basic.articles.index', compact('articles'));
     // }
-    public function __invoke(SearchArticleViewModel $viewModel): View
+    public function __invoke(SearchArticleBasicViewModel $viewModel): View
     {
         // OK
         // $articles = Article::when(request()->query('status'), function ($query) {

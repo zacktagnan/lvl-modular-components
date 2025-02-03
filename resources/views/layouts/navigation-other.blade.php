@@ -63,7 +63,7 @@
                                             Básico
                                         </a>
 
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
+                                        <a href="{{ route('searchers.pipeline-1d2.improved.articles') }}" title="Buscador mejorado" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
                                             Mejorado
                                         </a>
 

@@ -29,7 +29,7 @@ final class PipelineSearcherViewModel extends ViewModel
                     ],
                     [
                         'title' => __('Mejorado'),
-                        'url' => route('profile.edit'),
+                        'url' => route('searchers.pipeline-1d2.improved.articles'),
                     ],
                     [
                         'title' => __('Patrón Pipeline'),

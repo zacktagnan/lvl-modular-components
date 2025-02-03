@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\ViewModels\ViewModel;
 use App\Transformers\ArticleTransformer;
 
-class SearchArticleViewModel extends ViewModel
+class SearchArticleBasicViewModel extends ViewModel
 {
     public function __construct(protected ArticleTransformer $transformer)
     {}
@@ -32,28 +32,19 @@ class SearchArticleViewModel extends ViewModel
 
     public function articles()
     {
-        // Mejorado
+        // Básico
         // -----------------------------------------------------------------------------------
         return $this->transformer->transform(
             // Article::where('title', 'xxx')->paginate(5)
-            Article::filtered()
+            Article::when(request()->query('status'), function ($query) {
+                $query->where('status', request()->query('status'));
+            })
+            ->when(request()->query('sort'), function ($query) {
+                $query->orderBy('id', request()->query('sort'));
+            })
             ->paginate(5)
             ->withQueryString()
         );
-
-        // Básico
-        // -----------------------------------------------------------------------------------
-        // return $this->transformer->transform(
-        //     // Article::where('title', 'xxx')->paginate(5)
-        //     Article::when(request()->query('status'), function ($query) {
-        //         $query->where('status', request()->query('status'));
-        //     })
-        //     ->when(request()->query('sort'), function ($query) {
-        //         $query->orderBy('id', request()->query('sort'));
-        //     })
-        //     ->paginate(5)
-        //     ->withQueryString()
-        // );
 
         // OK
         // return Article::when(request()->query('status'), function ($query) {
