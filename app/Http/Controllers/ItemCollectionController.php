@@ -12,4 +12,9 @@ class ItemCollectionController extends Controller
         // dd($viewModel->toArray());
         return view('collections.index', $viewModel);
     }
+
+    public function destroy()
+    {
+        echo 'Esto es el ItemCollectionController@destroy';
+    }
 }

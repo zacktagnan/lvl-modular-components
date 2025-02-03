@@ -29,7 +29,7 @@ final class GetItemCollectionViewModel extends ViewModel
     public function itemCollections(): array
     {
         return $this->transformer->transform(
-            ItemCollection::forLoggedUser()->paginate(10)
+            ItemCollection::forLoggedUser()->paginate(1)
         );
     }
 
@@ -48,11 +48,9 @@ final class GetItemCollectionViewModel extends ViewModel
     public function tableHeaders(): array
     {
         return [
-            [
-                __('Nombre'),
-                __('Descripción'),
-                __('Acciones'),
-            ],
+            __('Nombre'),
+            __('Descripción'),
+            __('Acciones'),
         ];
     }
 }
