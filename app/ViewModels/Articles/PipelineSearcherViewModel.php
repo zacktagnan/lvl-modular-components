@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ViewModels;
+namespace App\ViewModels\Articles;
 
-use Illuminate\Support\Facades\Auth;
+use App\ViewModels\ViewModel;
 
 final class PipelineSearcherViewModel extends ViewModel
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\GetArticleViewModel;
 use Illuminate\View\View;
+use App\ViewModels\Articles\SearchArticleViewModel;
 
 class ArticleController extends Controller
 {
@@ -21,8 +21,9 @@ class ArticleController extends Controller
 
     //     return view('searchers.pipeline-1d2.basic.articles.index', compact('articles'));
     // }
-    public function __invoke(GetArticleViewModel $getArticleViewModel): View
+    public function __invoke(SearchArticleViewModel $viewModel): View
     {
+        // OK
         // $articles = Article::when(request()->query('status'), function ($query) {
         //         $query->where('status', request()->query('status'));
         //     })
@@ -33,9 +34,15 @@ class ArticleController extends Controller
         //     // Para pasar las QUERY_STRINGs disponibles a lo largo de la paginación
         //     ->withQueryString();
 
-        return view('searchers.pipeline-1d2.basic.articles.index', [
-            'viewData' =>  $getArticleViewModel,
-        ]);
-        // return view('searchers.pipeline-1d2.basic.articles.index', $getArticleViewModel);
+        // OK - pero no para todo lo que viene de su ViewModel
+        // return view('searchers.pipeline-1d2.basic.articles.index', $viewModel);
+
+        // OK
+        // return view('searchers.pipeline-1d2.basic.articles.index', [
+        //     'viewData' =>  $viewModel,
+        // ]);
+
+        // Con un ViewModel y un Transformer
+        return view('searchers.pipeline-1d2.basic.articles.index', $viewModel);
     }
 }

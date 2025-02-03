@@ -11,9 +11,7 @@ use Psr\Container\NotFoundExceptionInterface;
 final class GetItemCollectionViewModel extends ViewModel
 {
     public function __construct(protected ItemCollectionTransformer $transformer)
-    {
-
-    }
+    {}
 
     /**
      * @throws ContainerExceptionInterface

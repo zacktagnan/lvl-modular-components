@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\PipelineSearcherViewModel;
 use Illuminate\View\View;
+use App\ViewModels\Articles\PipelineSearcherViewModel;
 
 class PipelineSearcherController extends Controller
 {
