@@ -32,18 +32,28 @@ class SearchArticleViewModel extends ViewModel
 
     public function articles()
     {
+        // Mejorado
+        // -----------------------------------------------------------------------------------
         return $this->transformer->transform(
             // Article::where('title', 'xxx')->paginate(5)
-            Article::when(request()->query('status'), function ($query) {
-                $query->where('status', request()->query('status'));
-            })
-            ->when(request()->query('sort'), function ($query) {
-                $query->orderBy('id', request()->query('sort'));
-            })
+            Article::filtered()
             ->paginate(5)
-            // Para pasar las QUERY_STRINGs disponibles a lo largo de la paginación
             ->withQueryString()
         );
+
+        // Básico
+        // -----------------------------------------------------------------------------------
+        // return $this->transformer->transform(
+        //     // Article::where('title', 'xxx')->paginate(5)
+        //     Article::when(request()->query('status'), function ($query) {
+        //         $query->where('status', request()->query('status'));
+        //     })
+        //     ->when(request()->query('sort'), function ($query) {
+        //         $query->orderBy('id', request()->query('sort'));
+        //     })
+        //     ->paginate(5)
+        //     ->withQueryString()
+        // );
 
         // OK
         // return Article::when(request()->query('status'), function ($query) {
