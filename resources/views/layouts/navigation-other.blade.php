@@ -67,7 +67,7 @@
                                             Mejorado
                                         </a>
 
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
+                                        <a href="{{ route('searchers.pipeline-1d2.pipeline.articles') }}" title="Buscador con Pipeline" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
                                             Patrón Pipeline
                                         </a>
                                     </div>

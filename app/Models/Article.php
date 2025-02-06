@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use App\Enums\ArticleStatus;
+use App\Filters\Sort;
+use App\Filters\Status;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Pipeline\Pipeline;
 
 class Article extends Model
 {
@@ -22,6 +25,7 @@ class Article extends Model
         };
     }
 
+    // :: Aplicando mejora sobre el básico ::
     public function scopeFiltered(Builder $builder): Builder
     {
         return $builder
@@ -31,5 +35,17 @@ class Article extends Model
             ->when(request()->query('sort'), function ($query) {
                 $query->orderBy('id', request()->query('sort'));
             });
+    }
+
+    // :: Aplicando Pipeline ::
+    public function scopeFilteredWithPipeline(Builder $builder): Builder
+    {
+        return app(Pipeline::class)
+            ->send($builder)
+            ->through([
+                Status::class,
+                Sort::class,
+            ])
+            ->thenReturn();
     }
 }

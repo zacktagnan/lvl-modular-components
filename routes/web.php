@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleBasicController;
 use App\Http\Controllers\ArticleImprovedController;
+use App\Http\Controllers\ArticlePipelineController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemCollectionController;
 use App\Http\Controllers\PipelineSearcherController;
@@ -38,6 +39,9 @@ Route::prefix('searchers')->as('searchers.')->group(function () {
         });
         Route::prefix('improved')->as('improved.')->group(function () {
             Route::get('/articles', ArticleImprovedController::class)->name('articles');
+        });
+        Route::prefix('pipeline')->as('pipeline.')->group(function () {
+            Route::get('/articles', ArticlePipelineController::class)->name('articles');
         });
     });
 });
