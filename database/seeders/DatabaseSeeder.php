@@ -13,11 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         $this->call([UserSeeder::class]);
 
         // Otros - Buscador Pipeline 1d2
         Article::factory()->count(120)->create();
+
+        $this->call([
+            CategorySeeder::class,
+            ColorSeeder::class,
+            BrandSeeder::class,
+            SizeSeeder::class,
+            ProductSeeder::class,
+        ]);
     }
 }

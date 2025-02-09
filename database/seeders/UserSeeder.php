@@ -47,5 +47,8 @@ class UserSeeder extends Seeder
                 'remember_token' => $row['remember_token'],
             ]);
         }
+
+        // Datos aleatorios...
+        User::factory(50)->create();
     }
 }
