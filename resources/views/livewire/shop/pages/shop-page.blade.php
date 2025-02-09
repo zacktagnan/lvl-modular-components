@@ -1,9 +1,9 @@
-<div class="container-fluid p-5">
-    <div class="flex flex-wrap">
+<div class="w-full mx-auto p-5">
+    <div class="grid grid-cols-12 gap-4">
         <!-- Sidebar Filters -->
         <div
             style="height: 90vh !important;"
-            class="w-full md:w-1/3 lg:w-1/3 xl:w-1/4 2xl:w-1/6 overflow-auto"
+            class="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-2 overflow-auto bg-green-500"
         >
             <livewire:shop.filters.category-filter />
 
@@ -30,7 +30,7 @@
         <!-- ./Sidebar Filters -->
 
         <!-- Products -->
-        <div class="w-full md:w-2/3 lg:w-2/3 xl:w-3/4 2xl:w-5/6">
+        <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 2xl:col-span-10 bg-orange-400">
             <div class="flex flex-wrap mb-3">
                 <div class="flex-shrink-0">
                     <button class="px-2 pt-0.5 pb-1 text-white bg-red-400 hover:bg-red-500 rounded transition-colors duration-150" wire:click="resetFilters">
@@ -45,9 +45,21 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap bg-red-500">
+                <div class="w-full grid grid-cols-4 gap-4">
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" />
+                </div>
+
                 <div class="w-full">
-                    <livewire:shop.lists.products-list />
+                    <livewire:shop.lists.product-list />
+                    xxxxxx
                 </div>
             </div>
         </div>

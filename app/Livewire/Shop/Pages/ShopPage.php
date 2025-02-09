@@ -2,8 +2,9 @@
 
 namespace App\Livewire\Shop\Pages;
 
-use Illuminate\View\View;
+use App\Models\Product;
 use Livewire\Component;
+use Illuminate\View\View;
 
 class ShopPage extends Component
 {
@@ -14,6 +15,7 @@ class ShopPage extends Component
 
     public function render(): View
     {
-        return view('livewire.shop.pages.shop-page');
+        $product = Product::first();
+        return view('livewire.shop.pages.shop-page', compact('product'));
     }
 }
