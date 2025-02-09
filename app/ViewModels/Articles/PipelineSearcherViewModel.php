@@ -33,25 +33,17 @@ final class PipelineSearcherViewModel extends ViewModel
                     ],
                     [
                         'title' => __('Patrón Pipeline'),
-                        'url' => route('profile.edit'),
+                        'url' => route('searchers.pipeline-1d2.pipeline.articles'),
                     ],
                 ],
             ],
             [
                 'title' => __('Buscadores-02'),
-                'description' => __('Implementando un buscador.'),
+                'description' => __('Implementando un buscador con Livewire.'),
                 'options' => [
                     [
-                        'title' => __('Básico'),
-                        'url' => route('profile.edit'),
-                    ],
-                    [
-                        'title' => __('Mejorado'),
-                        'url' => route('profile.edit'),
-                    ],
-                    [
-                        'title' => __('Patrón Pipeline'),
-                        'url' => route('profile.edit'),
+                        'title' => __('Buscador de Productos'),
+                        'url' => route('searchers.pipeline-2d2.shop.index'),
                     ],
                 ],
             ],

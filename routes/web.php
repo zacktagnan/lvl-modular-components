@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemCollectionController;
 use App\Http\Controllers\PipelineSearcherController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Shop\Pages\ShopPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,7 @@ require __DIR__.'/auth.php';
 
 Route::prefix('searchers')->as('searchers.')->group(function () {
     Route::get('/', PipelineSearcherController::class)->name('index');
+
     Route::prefix('pipeline-1d2')->as('pipeline-1d2.')->group(function () {
         Route::prefix('basic')->as('basic.')->group(function () {
             Route::get('/articles', ArticleBasicController::class)->name('articles');
@@ -42,6 +44,12 @@ Route::prefix('searchers')->as('searchers.')->group(function () {
         });
         Route::prefix('pipeline')->as('pipeline.')->group(function () {
             Route::get('/articles', ArticlePipelineController::class)->name('articles');
+        });
+    });
+
+    Route::prefix('pipeline-2d2')->as('pipeline-2d2.')->group(function () {
+        Route::prefix('shop')->as('shop.')->group(function () {
+            Route::get('/index', ShopPage::class)->name('index');
         });
     });
 });

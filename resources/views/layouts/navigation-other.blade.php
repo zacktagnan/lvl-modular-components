@@ -91,16 +91,8 @@
                                         x-transition:leave="transition ease-in duration-75"
                                         x-transition:leave-start="opacity-100 scale-100"
                                         x-transition:leave-end="opacity-0 scale-95">
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
-                                            Otro
-                                        </a>
-
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
-                                            Otro 2
-                                        </a>
-
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
-                                            Otro 3
+                                        <a href="{{ route('searchers.pipeline-2d2.shop.index') }}" title="Buscador de Productos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50">
+                                            Buscador de Productos
                                         </a>
                                     </div>
                                 </div>
