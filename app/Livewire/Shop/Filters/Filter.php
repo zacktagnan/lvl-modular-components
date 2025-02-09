@@ -14,7 +14,7 @@ class Filter extends Component
 
     protected string $eloquentModel;
 
-    public function filters(): Collection
+    public function models(): Collection
     {
         return collect();
     }
@@ -27,7 +27,7 @@ class Filter extends Component
     public function render(): View
     {
         return view('livewire.shop.filters.filter', [
-            'filters' => $this->filters(),
+            'models' => $this->models(),
             'alias' => Str::of(class_basename($this->eloquentModel))->lower(),
         ]);
     }
