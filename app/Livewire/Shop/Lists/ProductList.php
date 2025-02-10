@@ -2,18 +2,20 @@
 
 namespace App\Livewire\Shop\Lists;
 
+use App\Enums\ShopFilters;
 use App\Models\Product;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\View\View;
 use Livewire\Component;
+use Illuminate\View\View;
 use Livewire\WithPagination;
+use Illuminate\Pipeline\Pipeline;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductList extends Component
 {
     use WithPagination;
 
     private array $filters = [
-        'category' => [],
+        'category' => [1,2],
     ];
 
     public function mount(): void
@@ -40,14 +42,25 @@ class ProductList extends Component
 
     private function getProducts(): LengthAwarePaginator
     {
-        return Product::query()
-            ->with([
-                'brand:id,name',
-                'category:id,name',
-                'color:id,name',
-                'size:id,name',
-                'reviews:id,product_id,rating',
-            ])
+        $products = app(Pipeline::class)
+            ->send(Product::query()
+                ->with([
+                    'brand:id,name',
+                    'category:id,name',
+                    'color:id,name',
+                    'size:id,name',
+                    'reviews:id,product_id,rating',
+                ])
+            )
+            ->through(
+                collect($this->filters())
+                    ->map(fn ($filter, $value) => ShopFilters::from($value)->create($filter))
+                    ->values()
+                    ->all(),
+            )
+            ->thenReturn();
+
+        return $products
             ->paginate(session(key: 'shop:perPage', default: 4));
     }
 
