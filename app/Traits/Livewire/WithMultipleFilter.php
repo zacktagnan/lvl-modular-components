@@ -20,6 +20,8 @@ trait WithMultipleFilter
         // por ejemplo, uno de los elementos de $filters podría ser:
         // ['category' => [1, 2, 3]]
 
+        // dd($filters);
+
         $this->applyFilters($filters);
     }
 }

@@ -1,27 +1,38 @@
 <x-filter-card :title="$title">
     <ul class="list-none border-0">
         @foreach ($models as $model)
+            @php
+                $classNotFirst = !$loop->first
+                    ? ' pt-2 border-t border-gray-200'
+                    : '';
+                $classNotLast = !$loop->last
+                    ? ' pb-2'
+                    : '';
+            @endphp
             <li
-                class="px-4 py-2 border-b border-gray-200"
+                class="flex items-center justify-between px-4{{ $classNotFirst }}{{ $classNotLast }}"
                 wire:key="{{ $alias }}-filter-{{ $model->id }}"
             >
-                <input
-                    class="form-checkbox me-1"
-                    type="checkbox"
-                    value="{{ $filter->id }}"
-                    id="{{ $alias }}-filter-{{ $model->id }}"
-                    wire:model.live="selectedModels"
-                />
-                <label
-                    class="ml-2"
-                    for="{{ alias }}-filter-{{ $model->id }}"
-                >
-                    {{ $model->name }}
-                </label>
+                <div class="flex items-center">
+                    <input
+                        class="form-checkbox"
+                        type="checkbox"
+                        value="{{ $model->id }}"
+                        id="{{ $alias }}-filter-{{ $model->id }}"
+                        wire:model.live="selectedModels"
+                    />
+                    <label
+                        class="ml-2"
+                        for="{{ $alias }}-filter-{{ $model->id }}"
+                    >
+                        {{ $model->name }}
+                    </label>
+                </div>
                 <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded">
                     {{ $model->products_count }}
                 </span>
             </li>
         @endforeach
+        {{-- @json($selectedModels) --}}
     </ul>
 </x-filter-card>

@@ -5,8 +5,8 @@ namespace App\Livewire\Shop\Filters;
 use Livewire\Component;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use App\Livewire\Shop\Lists\ProductList;
-use Illuminate\Database\Eloquent\Collection;
 
 class Filter extends Component
 {
@@ -21,6 +21,7 @@ class Filter extends Component
 
     public function applyFilters(array $filters): void
     {
+        // dd($filters);
         $this->dispatch('filters-updated', filters: $filters)->to(ProductList::class);
     }
 
