@@ -3,7 +3,7 @@
         <!-- Sidebar Filters -->
         <div
             style="height: 90vh !important;"
-            class="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-2 overflow-auto bg-green-500"
+            class="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-2 overflow-auto"
         >
             <livewire:shop.filters.category-filter />
 
@@ -30,7 +30,7 @@
         <!-- ./Sidebar Filters -->
 
         <!-- Products -->
-        <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 2xl:col-span-10 bg-orange-400">
+        <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 2xl:col-span-10">
             <div class="flex flex-wrap mb-3">
                 <div class="flex-shrink-0">
                     <button class="px-2 pt-0.5 pb-1 text-white bg-red-400 hover:bg-red-500 rounded transition-colors duration-150" wire:click="resetFilters">
@@ -45,23 +45,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap bg-red-500">
-                <div class="w-full grid grid-cols-4 gap-4">
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                    <x-product-card :product="$product" />
-                </div>
-
-                <div class="w-full">
-                    <livewire:shop.lists.product-list />
-                    xxxxxx
-                </div>
-            </div>
+            <livewire:shop.lists.product-list />
         </div>
         <!-- ./Products -->
     </div>

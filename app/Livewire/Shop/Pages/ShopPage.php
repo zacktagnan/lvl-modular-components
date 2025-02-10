@@ -15,7 +15,6 @@ class ShopPage extends Component
 
     public function render(): View
     {
-        $product = Product::first();
-        return view('livewire.shop.pages.shop-page', compact('product'));
+        return view('livewire.shop.pages.shop-page');
     }
 }
