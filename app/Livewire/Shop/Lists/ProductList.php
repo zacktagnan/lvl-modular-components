@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Shop\Lists;
 
-use App\Enums\ShopFilters;
 use App\Models\Product;
 use Livewire\Component;
 use Illuminate\View\View;
+use App\Enums\Filters\ShopFilters;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -15,12 +16,21 @@ class ProductList extends Component
     use WithPagination;
 
     private array $filters = [
-        'category' => [1,2],
+        'category' => [],
     ];
 
     public function mount(): void
     {
         $this->resetFilters();
+    }
+
+    #[On('filters-updated')]
+    public function refreshProductList(mixed $filters): void
+    {
+        $key = key($filters);
+        $value = $filters[$key];
+        session()->put("shop:{$key}", $value);
+        $this->gotoPage(1);
     }
 
     private function resetFilters(): void
