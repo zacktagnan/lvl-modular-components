@@ -14,7 +14,7 @@ class CategoryFilter extends Filter
             return $next($items);
         }
 
-        $items->where('category_id', $this->filter);
+        $items->whereIn('category_id', $this->filter);
 
         return $next($items);
     }
