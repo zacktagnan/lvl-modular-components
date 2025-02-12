@@ -18,7 +18,7 @@ class PerPageFilter extends Filter
     public function render(): View
     {
         return view('livewire.shop.filters.per-page-filter', [
-            'options' => [4, 8, 12, 16, 20, 24, 28],
+            'options' => [2, 4, 8, 12, 16, 20, 24, 28],
         ]);
     }
 }
