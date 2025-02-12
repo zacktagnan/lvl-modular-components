@@ -2,12 +2,23 @@
 
 namespace App\Livewire\Shop\Filters;
 
-use Livewire\Component;
+use App\Traits\Livewire\WithSingleFilter;
+use Illuminate\View\View;
 
-class PerPageFilter extends Component
+class PerPageFilter extends Filter
 {
-    public function render()
+    use WithSingleFilter;
+
+    public array $filter = [
+        'perPage' => self::DEFAULT_PER_PAGE,
+    ];
+
+    const DEFAULT_PER_PAGE = 4;
+
+    public function render(): View
     {
-        return view('livewire.shop.filters.per-page-filter');
+        return view('livewire.shop.filters.per-page-filter', [
+            'options' => [4, 8, 12, 16, 20, 24, 28],
+        ]);
     }
 }

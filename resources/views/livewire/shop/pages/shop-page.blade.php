@@ -33,7 +33,7 @@
         <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 2xl:col-span-10">
             <div class="flex flex-wrap mb-3">
                 <div class="flex-shrink-0">
-                    <button class="px-2 pt-0.5 pb-1 text-white bg-red-400 hover:bg-red-500 rounded transition-colors duration-150" wire:click="resetFilters">
+                    <button class="px-2 pt-0.5 pb-1 text-lg text-white bg-red-400 hover:bg-red-500 rounded transition-colors duration-150" wire:click="resetFilters">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>

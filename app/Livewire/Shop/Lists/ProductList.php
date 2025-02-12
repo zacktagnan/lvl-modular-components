@@ -6,6 +6,7 @@ use App\Models\Product;
 use Livewire\Component;
 use Illuminate\View\View;
 use App\Enums\Filters\ShopFilters;
+use App\Livewire\Shop\Filters\PerPageFilter;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Illuminate\Pipeline\Pipeline;
@@ -79,7 +80,7 @@ class ProductList extends Component
             ->thenReturn();
 
         return $products
-            ->paginate(session(key: 'shop:perPage', default: 4));
+            ->paginate(session(key: 'shop:perPage', default: PerPageFilter::DEFAULT_PER_PAGE));
     }
 
     public function render(): View
