@@ -9,11 +9,18 @@ class PerPageFilter extends Filter
 {
     use WithSingleFilter;
 
+    const DEFAULT_PER_PAGE = 4;
+
     public array $filter = [
         'perPage' => self::DEFAULT_PER_PAGE,
     ];
 
-    const DEFAULT_PER_PAGE = 4;
+    public string $label;
+
+    public function mount()
+    {
+        $this->label = __('registros por página');
+    }
 
     public function render(): View
     {

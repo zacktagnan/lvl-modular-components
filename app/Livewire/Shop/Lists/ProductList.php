@@ -18,6 +18,7 @@ class ProductList extends Component
 
     private array $filters = [
         'category' => [],
+        'search' => '',
     ];
 
     public function mount(): void
@@ -30,6 +31,7 @@ class ProductList extends Component
     {
         $key = key($filters);
         $value = $filters[$key];
+        // dd($value);
         session()->put("shop:{$key}", $value);
         $this->gotoPage(1);
     }

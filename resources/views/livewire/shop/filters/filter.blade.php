@@ -3,7 +3,7 @@
         @foreach ($models as $model)
             @php
                 $classNotFirst = !$loop->first
-                    ? ' pt-2 border-t border-gray-200'
+                    ? ' pt-2 border-t border-gray-300'
                     : '';
                 $classNotLast = !$loop->last
                     ? ' pb-2'
