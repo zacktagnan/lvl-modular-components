@@ -50,3 +50,19 @@
         <!-- ./Products -->
     </div>
 </div>
+
+@script
+<script>
+    $wire.on('clean-checkboxes', () => {
+        // console.log('clean-checkboxes...');
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;  // Forzar los checkboxes a no estar marcados
+        });
+    });
+
+    $wire.on('reset-select-per-page', () => {
+        const defaultPerPage = {{ \App\Livewire\Shop\Filters\PerPageFilter::DEFAULT_PER_PAGE }};
+        document.getElementById('per-page-select').value = defaultPerPage;
+    });
+</script>
+@endscript

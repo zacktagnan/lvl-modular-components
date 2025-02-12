@@ -6,12 +6,3 @@
     </select>
     <span>registros por página</span>
 </div>
-
-@script
-<script>
-    $wire.on('reset-select-per-page', () => {
-        const defaultPerPage = {{ \App\Livewire\Shop\Filters\PerPageFilter::DEFAULT_PER_PAGE }};
-        document.getElementById('per-page-select').value = defaultPerPage;
-    });
-</script>
-@endscript

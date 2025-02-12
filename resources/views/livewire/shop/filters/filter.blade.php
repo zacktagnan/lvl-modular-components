@@ -38,14 +38,3 @@
         {{-- @json($selectedModels) --}}
     </ul>
 </x-filter-card>
-
-@script
-<script>
-    $wire.on('clean-checkboxes', () => {
-        // console.log('clean-checkboxes...');
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = false;  // Forzar los checkboxes a no estar marcados
-        });
-    });
-</script>
-@endscript
