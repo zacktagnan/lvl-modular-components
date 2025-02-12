@@ -39,7 +39,6 @@
     </ul>
 </x-filter-card>
 
-
 @script
 <script>
     $wire.on('clean-checkboxes', () => {

@@ -15,6 +15,8 @@ trait WithSingleFilter
     public function onResetFilters(): void
     {
         $this->filter = [];
+
+        $this->dispatch('reset-select-per-page');
     }
 
     public function updatedFilter(): void
