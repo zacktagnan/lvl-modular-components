@@ -21,6 +21,8 @@
                         id="{{ $alias }}-filter-{{ $model->id }}"
                         wire:model.live="selectedModels"
                     />
+                    {{-- @json($selectedModels)
+                    @json($model->id) --}}
                     <label
                         class="ml-2"
                         for="{{ $alias }}-filter-{{ $model->id }}"
@@ -28,7 +30,7 @@
                         {{ $model->name }}
                     </label>
                 </div>
-                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded">
+                <span class="inline-block px-2 pt-0.5 pb-1 text-xs font-semibold text-white bg-blue-500 rounded-full">
                     {{ $model->products_count }}
                 </span>
             </li>
@@ -36,3 +38,15 @@
         {{-- @json($selectedModels) --}}
     </ul>
 </x-filter-card>
+
+
+@script
+<script>
+    $wire.on('clean-checkboxes', () => {
+        // console.log('clean-checkboxes...');
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;  // Forzar los checkboxes a no estar marcados
+        });
+    });
+</script>
+@endscript

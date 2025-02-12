@@ -25,12 +25,20 @@ class ProductList extends Component
     }
 
     #[On('filters-updated')]
-    public function refreshProductList(mixed $filters): void
+    public function onFiltersUpdated(mixed $filters): void
     {
         $key = key($filters);
         $value = $filters[$key];
         session()->put("shop:{$key}", $value);
         $this->gotoPage(1);
+    }
+
+    #[On('reset-filters')]
+    public function onResetFilters(): void
+    {
+        $this->resetFilters();
+
+        $this->dispatch('shop-reset-filters');
     }
 
     private function resetFilters(): void
