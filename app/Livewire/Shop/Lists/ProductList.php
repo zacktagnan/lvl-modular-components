@@ -7,6 +7,7 @@ use Livewire\Component;
 use Illuminate\View\View;
 use App\Enums\Filters\ShopFilters;
 use App\Livewire\Shop\Filters\PerPageFilter;
+use App\Livewire\Shop\Pages\ShopPage;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Illuminate\Pipeline\Pipeline;
@@ -20,6 +21,7 @@ class ProductList extends Component
         'category' => [],
         'price' => [],
         'search' => '',
+        'rating' => null,
     ];
 
     public function mount(): void
@@ -81,6 +83,10 @@ class ProductList extends Component
                     ->all(),
             )
             ->thenReturn();
+
+        $total = $products->count();
+
+        $this->dispatch('product-count-updated', total: $total)->to(ShopPage::class);
 
         return $products
             ->paginate(session(key: 'shop:perPage', default: PerPageFilter::DEFAULT_PER_PAGE));

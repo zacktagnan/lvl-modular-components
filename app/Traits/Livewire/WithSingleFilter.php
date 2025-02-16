@@ -16,6 +16,7 @@ trait WithSingleFilter
     {
         $this->filter = [];
 
+        $this->dispatch('reset-rating-radiobuttons');
         $this->dispatch('reset-min-max');
         $this->dispatch('reset-select-per-page');
         $this->dispatch('reset-search');

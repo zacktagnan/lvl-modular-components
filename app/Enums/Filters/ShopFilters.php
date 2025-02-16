@@ -6,6 +6,7 @@ use App\Filters\Filter;
 use App\Filters\Shop\PriceFilter;
 use App\Filters\Shop\SearchFilter;
 use App\Filters\Shop\CategoryFilter;
+use App\Filters\Shop\RatingFilter;
 
 enum ShopFilters: string
 {
@@ -14,7 +15,7 @@ enum ShopFilters: string
     // case BRAND = 'brand';
     // case COLOR = 'color';
     // case SIZE = 'size';
-    // case RATING = 'rating';
+    case RATING = 'rating';
     // case SORT = 'sort';
     case SEARCH = 'search';
 
@@ -26,7 +27,7 @@ enum ShopFilters: string
             // self::BRAND => new BrandFilter($filter),
             // self::COLOR => new ColorFilter($filter),
             // self::SIZE => new SizeFilter($filter),
-            // self::RATING => new RatingFilter($filter),
+            self::RATING => new RatingFilter($filter),
             // self::SORT => new SortFilter($filter),
             self::SEARCH => new SearchFilter($filter),
         };

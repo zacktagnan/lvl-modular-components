@@ -2,12 +2,34 @@
 
 namespace App\Livewire\Shop\Filters;
 
-use Livewire\Component;
+use App\Traits\Livewire\WithSingleFilter;
+use Illuminate\View\View;
 
-class RatingFilter extends Component
+class RatingFilter extends Filter
 {
-    public function render()
+    use WithSingleFilter;
+
+    public string $title;
+
+    public array $filter = [
+        'rating' => null,
+    ];
+
+    public function mount()
     {
-        return view('livewire.shop.filters.rating-filter');
+        $this->title = __('Valoraciones');
+    }
+
+    public function render(): View
+    {
+        return view('livewire.shop.filters.rating-filter', [
+            'options' => [
+                5 => '5 estrellas',
+                4 => '4 estrellas o más',
+                3 => '3 estrellas o más',
+                2 => '2 estrellas o más',
+                1 => '1 estrella o más',
+            ],
+        ]);
     }
 }

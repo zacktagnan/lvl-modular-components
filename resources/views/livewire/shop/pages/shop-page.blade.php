@@ -31,15 +31,23 @@
 
         <!-- Products -->
         <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 2xl:col-span-10">
-            <div class="flex flex-wrap mb-3 gap-3">
+            <div class="flex flex-wrap mb-3 gap-8">
                 <div class="flex-shrink-0">
                     <button class="px-2 pt-0.5 pb-1 text-lg text-white bg-red-400 hover:bg-red-500 shadow rounded transition-colors duration-150" wire:click="resetFilters">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
+
+                <div class="flex-shrink-0 flex items-center justify-between gap-2 min-w-16">
+                    {{-- <livewire:shop.filters.per-page-filter /> --}}
+                    <span>Total:</span>
+                    <span class="font-bold">{{ $total }}</span>
+                </div>
+
                 <div class="flex-shrink-0">
                     <livewire:shop.filters.per-page-filter />
                 </div>
+
                 <div class="flex-grow">
                     <livewire:shop.filters.search-filter />
                 </div>
@@ -63,6 +71,12 @@
     $wire.on('reset-min-max', () => {
         document.getElementById('min-price').value = '';
         document.getElementById('max-price').value = '';
+    });
+
+    $wire.on('reset-rating-radiobuttons', () => {
+        document.querySelectorAll('input[type="radio"]').forEach(radiobutton => {
+            radiobutton.checked = false;
+        });
     });
 
     $wire.on('reset-select-per-page', () => {
