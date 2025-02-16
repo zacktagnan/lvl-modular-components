@@ -53,11 +53,16 @@
 
 @script
 <script>
-    $wire.on('clean-checkboxes', () => {
-        // console.log('clean-checkboxes...');
+    $wire.on('reset-checkboxes', () => {
+        // console.log('reset-checkboxes...');
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.checked = false;  // Forzar los checkboxes a no estar marcados
         });
+    });
+
+    $wire.on('reset-min-max', () => {
+        document.getElementById('min-price').value = '';
+        document.getElementById('max-price').value = '';
     });
 
     $wire.on('reset-select-per-page', () => {

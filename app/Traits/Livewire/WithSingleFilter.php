@@ -16,8 +16,8 @@ trait WithSingleFilter
     {
         $this->filter = [];
 
+        $this->dispatch('reset-min-max');
         $this->dispatch('reset-select-per-page');
-
         $this->dispatch('reset-search');
     }
 

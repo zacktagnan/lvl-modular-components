@@ -21,7 +21,7 @@ trait WithMultipleFilter
         // dd($this->selectedModels);
         // -------------------------------------------------------------------
         // $this->dispatch('refresh')->self();
-        $this->dispatch('clean-checkboxes');
+        $this->dispatch('reset-checkboxes');
     }
 
     public function updatedSelectedModels(): void

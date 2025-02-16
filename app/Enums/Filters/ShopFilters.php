@@ -3,13 +3,14 @@
 namespace App\Enums\Filters;
 
 use App\Filters\Filter;
+use App\Filters\Shop\PriceFilter;
 use App\Filters\Shop\SearchFilter;
 use App\Filters\Shop\CategoryFilter;
 
 enum ShopFilters: string
 {
     case CATEGORY = 'category';
-    // case PRICE = 'price';
+    case PRICE = 'price';
     // case BRAND = 'brand';
     // case COLOR = 'color';
     // case SIZE = 'size';
@@ -21,7 +22,7 @@ enum ShopFilters: string
     {
         return match($this) {
             self::CATEGORY => new CategoryFilter($filter),
-            // self::PRICE => new PriceFilter($filter),
+            self::PRICE => new PriceFilter($filter),
             // self::BRAND => new BrandFilter($filter),
             // self::COLOR => new ColorFilter($filter),
             // self::SIZE => new SizeFilter($filter),

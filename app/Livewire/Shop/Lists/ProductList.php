@@ -18,6 +18,7 @@ class ProductList extends Component
 
     private array $filters = [
         'category' => [],
+        'price' => [],
         'search' => '',
     ];
 
