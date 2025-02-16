@@ -2,12 +2,19 @@
 
 namespace App\Livewire\Shop\Filters;
 
-use Livewire\Component;
+use App\Models\Size;
+use App\Traits\Livewire\WithModelsFilter;
+use App\Traits\Livewire\WithMultipleFilter;
 
-class SizeFilter extends Component
+class SizeFilter extends Filter
 {
-    public function render()
+    use WithModelsFilter, WithMultipleFilter;
+
+    public string $title;
+    protected string $eloquentModel = Size::class;
+
+    public function mount()
     {
-        return view('livewire.shop.filters.size-filter');
+        $this->title = __('Tamaños');
     }
 }
