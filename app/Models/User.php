@@ -10,4 +10,9 @@ class User extends Base\User
     {
         return $this->hasMany(ItemCollection::class);
     }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
 }
