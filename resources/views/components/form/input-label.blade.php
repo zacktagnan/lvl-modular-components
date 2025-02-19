@@ -6,3 +6,7 @@
 >
     {{ data_get($field, 'label') }}
 </label>
+
+@if (data_get($field, 'required'))
+    <span class="text-cyan-500">*</span>
+@endif
