@@ -30,7 +30,6 @@ final class UpsertItemCollectionViewModel extends ViewModel
                 'hint' => __('Insertar el nombre de la colección'),
             ],
             'description' => [
-                'type' => 'textarea',
                 'label' => __('Descripción'),
                 'placeholder' => __('Teclear una descripción'),
                 'value' => $this->itemCollection?->description,
