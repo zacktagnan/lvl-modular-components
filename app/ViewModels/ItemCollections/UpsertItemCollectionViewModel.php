@@ -55,6 +55,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
     {
         return [
             [
+                'type' => 'submit',
                 'text' => $this->itemCollection
                     ? __('Actualizar')
                     : __('Crear'),
