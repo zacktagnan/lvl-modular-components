@@ -4,20 +4,20 @@
     <table {{ $attributes->merge([
         'class' => 'w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'
     ]) }}>
-        <x-table.header :headers="$headers" />
+        <x-collections.table.header :headers="$headers" />
 
-        <x-table.body>
+        <x-collections.table.body>
             @if (empty(data_get($items, 'data', [])))
-                <x-table.empty-row :colspan="count($headers)" :message="$empty" />
+                <x-collections.table.empty-row :colspan="count($headers)" :message="$empty" />
             @else
                 {{ $slot }}
             @endif
-        </x-table.body>
+        </x-collections.table.body>
 
         @if ($footer ?? false)
-            <x-table.footer>
+            <x-collections.table.footer>
                 {{ $footer }}
-            </x-table.footer>
+            </x-collections.table.footer>
         @endif
     </table>
 </div>
