@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UpsertItemCollectionRequest;
 use App\Actions\ItemCollection\UpsertItemCollectionAction;
+use App\Actions\ItemCollection\DeleteItemCollectionAction;
 use App\ViewModels\ItemCollections\GetItemCollectionViewModel;
 use App\ViewModels\ItemCollections\UpsertItemCollectionViewModel;
 
 class ItemCollectionController extends Controller
 {
-    public function __construct(private UpsertItemCollectionAction $upsertItemCollectionAction)
+    public function __construct(
+        private readonly UpsertItemCollectionAction $upsertItemCollectionAction,
+        private readonly DeleteItemCollectionAction $deleteItemCollectionAction
+    )
     {}
 
     public function index(GetItemCollectionViewModel $viewModel): View
@@ -38,8 +42,8 @@ class ItemCollectionController extends Controller
 
     public function store(UpsertItemCollectionRequest $request): RedirectResponse
     {
+        // La forma simple sin DTO, Action, ViewModels...
         // $itemCollection = ItemCollection::create($request->validated());
-        // dd($itemCollection);
         // return redirect()->route('collections.index');
 
         $itemCollection = $this->upsertItemCollectionAction->execute(
@@ -64,8 +68,34 @@ class ItemCollectionController extends Controller
         return view('collections.upsert', $viewModel);
     }
 
-    public function destroy()
+    public function update(UpsertItemCollectionRequest $request, ItemCollection $collection): RedirectResponse
     {
-        echo 'Esto es el ItemCollectionController@destroy';
+        // La forma simple sin DTO, Action, ViewModels...
+        // $itemCollection = ItemCollection::update($request->validated());
+        // return redirect()->route('collections.index');
+
+        $itemCollection = $this->upsertItemCollectionAction->execute(
+            ItemCollectionDTO::fromRequest($request),
+            $collection,
+        );
+
+        return redirect()
+            ->route('collections.index')
+            ->with('status', __('Colección ":name" actualizada satisfactoriamente.', [
+                'name' => $itemCollection->name
+            ]));
+    }
+
+    public function destroy(ItemCollection $collection): RedirectResponse
+    {
+        Gate::authorize('delete', $collection);
+
+        $this->deleteItemCollectionAction->execute($collection);
+
+        return redirect()
+            ->route('collections.index')
+            ->with('status', __('Colección ":name" eliminada satisfactoriamente.', [
+                'name' => $collection->name
+            ]));
     }
 }

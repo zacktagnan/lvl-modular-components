@@ -14,7 +14,7 @@ readonly class ItemCollectionDTO
     {
         return new self(
             name: $request->validated('name'),
-            slug: Str::slug($request->validated('slug')),
+            slug: Str::slug($request->validated('name')),
             description: $request->validated('description'),
         );
     }

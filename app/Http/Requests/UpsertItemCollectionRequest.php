@@ -13,7 +13,7 @@ class UpsertItemCollectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if ($itemCollection = $this->route('itemCollection')) {
+        if ($itemCollection = $this->route('collection')) {
             return $this->user()->can('update', $itemCollection);
         }
 
@@ -28,17 +28,17 @@ class UpsertItemCollectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'name' => 'required|string|min:2|max:255|unique:item_collections,name,' . optional($this->route('itemCollection'))->id,
+            // 'name' => 'required|string|min:2|max:255|unique:item_collections,name,' . optional($this->route('collection'))->id,
             'name' => [
                 'required',
                 'string',
                 'min:2',
                 'max:255',
-                // 'unique:item_collections,name,' . optional($this->route('itemCollection'))->id,
+                // 'unique:item_collections,name,' . optional($this->route('collection'))->id,
                 // o
-                // Rule::unique('item_collections', 'name')->ignore(optional($this->route('itemCollection'))->id),
+                // Rule::unique('item_collections', 'name')->ignore(optional($this->route('collection'))->id),
                 // o
-                Rule::unique('item_collections', 'name')->ignore($this->route('itemCollection')),
+                Rule::unique('item_collections', 'name')->ignore($this->route('collection')),
             ],
             'description' => 'required|string|max:1000',
         ];
