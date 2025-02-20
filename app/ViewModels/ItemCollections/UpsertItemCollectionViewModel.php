@@ -21,7 +21,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
     {
         return [
             'name' => [
-                'component' => 'form.text-input',
+                'component' => 'collections.form.text-input',
                 'label' => __('Nombre'),
                 'placeholder' => __('Teclear un nombre de colección'),
                 'value' => $this->itemCollection?->name,
@@ -32,7 +32,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
                     : __('Insertar el nombre de la colección.'),
             ],
             'description' => [
-                'component' => 'form.textarea',
+                'component' => 'collections.form.textarea',
                 'label' => __('Descripción'),
                 'placeholder' => __('Teclear una descripción'),
                 'value' => $this->itemCollection?->description,
@@ -74,7 +74,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
     {
         return [
             'cancel' => [
-                'component' => 'form.action-get',
+                'component' => 'collections.form.action-get',
                 'text' => __('Cancelar'),
                 'title' => __('Cancelar el proceso'),
                 'url' => route('collections.index'),

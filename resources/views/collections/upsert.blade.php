@@ -6,21 +6,21 @@
     </x-slot>
 
     <x-page-wrapper>
-        <x-form.container :formAction="$formAction">
+        <x-collections.form.container :formAction="$formAction">
             @foreach ($formFields as $name => $field)
                 <div>
-                    <x-form.input-label :field="$field" :name="$name" />
+                    <x-collections.form.input-label :field="$field" :name="$name" />
 
                     <x-dynamic-component
-                        :component="data_get($field, 'component', 'form.text-input')"
+                        :component="data_get($field, 'component', 'collections.form.text-input')"
                         :field="$field"
                         :name="$name"
                     />
 
-                    <x-form.input-hint :hint="data_get($field, 'hint')" />
+                    <x-collections.form.input-hint :hint="data_get($field, 'hint')" />
                 </div>
 
-                <x-form.input-error :messages="$errors->get($name)" class="mt-2" />
+                <x-collections.form.input-error :messages="$errors->get($name)" class="mt-2" />
             @endforeach
 
             <div class="flex justify-end space-x-3">
@@ -31,8 +31,8 @@
                     />
                 @endforeach
 
-                <x-form.submit-button :button="$submitButton" />
+                <x-collections.form.submit-button :button="$submitButton" />
             </div>
-        </x-form.container>
+        </x-collections.form.container>
     </x-page-wrapper>
 </x-app-layout>
