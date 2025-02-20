@@ -53,6 +53,17 @@ class ItemCollectionController extends Controller
             ]));
     }
 
+    public function edit(ItemCollection $collection): View
+    {
+        Gate::authorize('update', $collection);
+
+        $viewModel = app(UpsertItemCollectionViewModel::class, [
+            'itemCollection' => $collection,
+        ]);
+        // dd($viewModel->toArray());
+        return view('collections.upsert', $viewModel);
+    }
+
     public function destroy()
     {
         echo 'Esto es el ItemCollectionController@destroy';

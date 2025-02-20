@@ -27,7 +27,9 @@ final class UpsertItemCollectionViewModel extends ViewModel
                 'value' => $this->itemCollection?->name,
                 'required' => true,
                 'maxlength' => 255,
-                'hint' => __('Insertar el nombre de la colección'),
+                'hint' => $this->itemCollection
+                    ? __('Puede modificar el nombre de la colección.')
+                    : __('Insertar el nombre de la colección.'),
             ],
             'description' => [
                 'component' => 'form.textarea',
@@ -37,7 +39,9 @@ final class UpsertItemCollectionViewModel extends ViewModel
                 'required' => true,
                 'rows' => 3,
                 'maxlength' => 1000,
-                'hint' => __('Insertar la descripción de la colección'),
+                'hint' => $this->itemCollection
+                    ? __('Puede modificar la descripción de la colección.')
+                    : __('Insertar la descripción de la colección.'),
             ],
         ];
     }
