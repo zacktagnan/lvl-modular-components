@@ -1,7 +1,7 @@
 @props(['field', 'name', 'class' => 'mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md'])
 
 <input
-    type="{{ data_get($field, 'type') }}"
+    type="text"
     name="{{ $name }}"
     id="{{ $name }}"
     value="{{ old($name, data_get($field, 'value')) }}"

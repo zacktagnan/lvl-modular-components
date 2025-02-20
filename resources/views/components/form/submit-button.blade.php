@@ -1,4 +1,4 @@
-@props(['text', 'class' => 'mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md'])
+@props(['button'])
 
 <button
     type="{{ data_get($button, 'type') }}"

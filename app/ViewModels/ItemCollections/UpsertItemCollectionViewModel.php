@@ -21,7 +21,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
     {
         return [
             'name' => [
-                'type' => 'text',
+                'component' => 'form.text-input',
                 'label' => __('Nombre'),
                 'placeholder' => __('Teclear un nombre de colección'),
                 'value' => $this->itemCollection?->name,
@@ -30,6 +30,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
                 'hint' => __('Insertar el nombre de la colección'),
             ],
             'description' => [
+                'component' => 'form.textarea',
                 'label' => __('Descripción'),
                 'placeholder' => __('Teclear una descripción'),
                 'value' => $this->itemCollection?->description,
@@ -54,16 +55,14 @@ final class UpsertItemCollectionViewModel extends ViewModel
     public function submitButton(): array
     {
         return [
-            [
-                'type' => 'submit',
-                'text' => $this->itemCollection
-                    ? __('Actualizar')
-                    : __('Crear'),
-                'title' => $this->itemCollection
-                    ? __('Actualizar registro')
-                    : __('Crear el nuevo registro'),
-                'class' => 'ml-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600',
-            ],
+            'type' => 'submit',
+            'text' => $this->itemCollection
+                ? __('Actualizar')
+                : __('Crear'),
+            'title' => $this->itemCollection
+                ? __('Actualizar registro')
+                : __('Crear el nuevo registro'),
+            'class' => 'ms-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600',
         ];
     }
 
@@ -75,7 +74,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
                 'title' => __('Cancelar el proceso'),
                 'method' => 'GET',
                 'url' => route('collections.index'),
-                'class' => 'bg-gray-500 text-white',
+                'class' => 'py-2 px-4 bg-gray-500 dark:bg-gray-100 hover:bg-gray-700 dark:hover:bg-white text-white dark:text-gray-300 rounded',
             ],
         ];
     }

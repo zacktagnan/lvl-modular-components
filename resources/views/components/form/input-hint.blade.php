@@ -1,7 +1,7 @@
 @props(['hint'])
 
 @if ($hint)
-    <p class="text-sm text-gray-500 dark:text-gray-300">
+    <p class="ml-1 italic text-sm text-gray-400 dark:text-gray-200">
         {{ $hint }}
     </p>
 @endif
