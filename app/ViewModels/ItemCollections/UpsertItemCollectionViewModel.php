@@ -62,7 +62,7 @@ final class UpsertItemCollectionViewModel extends ViewModel
             'title' => $this->itemCollection
                 ? __('Actualizar registro')
                 : __('Crear el nuevo registro'),
-            'class' => 'ms-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600',
+            'class' => 'bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600',
         ];
     }
 
@@ -70,9 +70,9 @@ final class UpsertItemCollectionViewModel extends ViewModel
     {
         return [
             'cancel' => [
+                'component' => 'form.action-get',
                 'text' => __('Cancelar'),
                 'title' => __('Cancelar el proceso'),
-                'method' => 'GET',
                 'url' => route('collections.index'),
                 'class' => 'py-2 px-4 bg-gray-500 dark:bg-gray-100 hover:bg-gray-700 dark:hover:bg-white text-white dark:text-gray-300 rounded',
             ],

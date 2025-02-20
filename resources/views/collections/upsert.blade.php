@@ -25,14 +25,10 @@
 
             <div class="flex justify-end space-x-3">
                 @foreach ($actions as $action)
-                    @if (data_get($action, 'method') === 'GET')
-                        <a
-                            href="{{ data_get($action, 'url') }}" title="{{ data_get($action, 'title') }}"
-                            class="{{ data_get($action, 'class') }}"
-                        >
-                            {{ data_get($action, 'text') }}
-                        </a>
-                    @endif
+                    <x-dynamic-component
+                        :component="data_get($action, 'component', 'form.action-get')"
+                        :action="$action"
+                    />
                 @endforeach
 
                 <x-form.submit-button :button="$submitButton" />
