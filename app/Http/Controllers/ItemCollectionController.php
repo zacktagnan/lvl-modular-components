@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Models\ItemCollection;
+use App\DTOs\ItemCollectionDTO;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\UpsertItemCollectionRequest;
+use App\Actions\ItemCollection\UpsertItemCollectionAction;
 use App\ViewModels\ItemCollections\GetItemCollectionViewModel;
 use App\ViewModels\ItemCollections\UpsertItemCollectionViewModel;
 
 class ItemCollectionController extends Controller
 {
+    public function __construct(private UpsertItemCollectionAction $upsertItemCollectionAction)
+    {}
+
     public function index(GetItemCollectionViewModel $viewModel): View
     {
         Gate::authorize('viewAny', ItemCollection::class);
@@ -27,6 +34,23 @@ class ItemCollectionController extends Controller
         ]);
         // dd($viewModel->toArray());
         return view('collections.upsert', $viewModel);
+    }
+
+    public function store(UpsertItemCollectionRequest $request): RedirectResponse
+    {
+        // $itemCollection = ItemCollection::create($request->validated());
+        // dd($itemCollection);
+        // return redirect()->route('collections.index');
+
+        $itemCollection = $this->upsertItemCollectionAction->execute(
+            ItemCollectionDTO::fromRequest($request)
+        );
+
+        return redirect()
+            ->route('collections.index')
+            ->with('status', __('Colección ":name" creada satisfactoriamente.', [
+                'name' => $itemCollection->name
+            ]));
     }
 
     public function destroy()
